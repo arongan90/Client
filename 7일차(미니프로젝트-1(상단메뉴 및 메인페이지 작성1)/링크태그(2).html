@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>링크태그(2).html</title>
+  <style>
+	/*
+		상단메뉴(가상선택자)
+			a:link=>방문하지 않은 링크문자열 표시 (클릭전 ex 파랑색)
+			a:visited=>방문했던 링크 문자열의 색깔을 지정(클릭후 ex Purple)
+			a:hover=>마우스를 갖다댄 링크문자열(ex 빨강색)
+			a:active=>클릭한 순간 링크문자열의 색깔
+
+			주의할 점) a:hover는 a:livk와 a:visited 뒤에 와야하고
+						  a:active는 a:hover 뒤에 와야한다.
+
+	*/
+
+	a:link {color:blue; text-decoration:none;}
+	a:visited {color:purple; text-decoration:none;}
+	a:hover {color:red; text-decoration:none;}
+	a:active {color:green; text-decoration:none;}
+
+	li {
+		font-size:25px;
+	}
+  </style>
+ </head>
+ <body>
+	<h3>Navigation(링크에 관련된 선택자 종류)</h3>
+	<ul>
+		<li><a href="http://www.daum.net">Home</a></li>
+		<li><a href="#">HTML5</a></li>
+		<li><a href="#">CSS</a></li>
+		<li><a href="#">JavaScript</a></li>
+	</ul>
+ </body>
+</html>

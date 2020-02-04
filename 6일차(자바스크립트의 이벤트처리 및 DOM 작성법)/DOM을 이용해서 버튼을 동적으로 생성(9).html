@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>DOM을 이용해서 버튼을 동적으로 생성(9).html</title>
+  <script>
+	//변수 2종류-> 지역변수(함수 내부에서 사용된 변수), 전역변수(함수 바깥에 선언한 변수)
+	//전역변수=> 전체 프로그램에서 사용되는 변수
+
+	var count=0; //div태그를 생성-> 구분할 수 있는 번호 체크
+	function appendItem(){ //추가 
+		count=count+1; //count +=1; 또는 count++; //변수를 하나증가(증감연산자)
+														 //count--;   //변수의 값을 하나감소
+		
+		//1.<div></div> 메모리상의 태그 만들기
+		var newItem=document.createElement("div");
+		
+		//2.삭제시킬 때 구분<div id="item_번호"></div>
+		//형식)생성된 태그.setAttribute(속성명,속성값) ->태그에 속성부여하는 함수
+		newItem.setAttribute("id","item_"+count); //<div id="item_번호"></div> 가 만들어짐
+			
+		//3.텍스트노드 생성-> createTextNode or innerHTML(긴문장) 속성을 사용
+		var html='새로 추가된 아이템['+count+']'+'<input type="button" value="삭제"'+'onclick="removeItem('+count+')"/>';
+			
+		//4.결합->새로 생성된 태그.innerHTML='값'
+		newItem.innerHTML=html; //<div id="item_1"> 새로 추가된~</div>
+			
+		//5.부모의 태그정보 얻어옴
+		var itemListNode=document.getElementById("itemList");
+			
+		//6.부모태그명.appendChild(자식태그명)
+		itemListNode.appendChild(newItem);
+
+	}
+	
+		function removeItem(idCount){ //삭제시킬 id값을 받아와서 삭제
+		//삭제시킬 태그정보
+		var item=document.getElementById("item_"+idCount);
+		//appendChild(~) <-> 부모태그명.removeChild(삭제시킬 자식태그명)
+		//부모태그를 얻어오는 방법2=> 자식태그명.parentNode(예약어)->부모태그(id를 모를때)
+		item.parentNode.removeChild(item);
+	}
+  </script>
+ </head>
+ <body>
+	<input type="button" value="추가" onclick="appendItem()">
+	<div id="itemList">
+		<!-- 
+		<div id="item_1">새로 추가된 아이템1[삭제버튼]</div>
+		<div id="item_2">새로 추가된 아이템2[삭제버튼]</div> 
+		-->
+	</div>
+ </body>
+</html>

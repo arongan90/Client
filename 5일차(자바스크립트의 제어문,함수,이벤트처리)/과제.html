@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>과제</title>
+  <script>
+	function toggle(){
+		var butval=document.f.b_name.value; // 자료형 : String(문자열)
+		//var butval2 = document.f.b_name; // 자료형 : Object(json)
+		
+		if (butval=="네이버"){
+			butval = "다음";
+			document.f.b_name.value="다음";
+		}
+		else if(butval=="다음"){
+			butval = "네이버";
+			document.f.b_name.value="네이버";
+		}
+		document.f.b_name.value = butval;
+		
+		/* if (butval2.value == "네이버"){
+			butval2.value = "다음";
+		}
+		else if(butval2.value == "다음") {
+			butval2.value ="네이버";
+		} */
+	}	
+  </script>
+ </head>
+ <body>
+	<form name="f" align="center">
+		<div style="font-size:20px; font-weight="border"> <b>버튼을 눌러주세요!</b></div><br>
+		<input type="button" value="네이버"  name="b_name" onclick="toggle();">
+	</form>
+ </body>
+</html>

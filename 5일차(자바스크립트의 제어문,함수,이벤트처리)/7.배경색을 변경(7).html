@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>7.배경색을 변경(7).html</title>
+  <style>
+	#box {
+		width:200px;
+		height:200px;
+		background:#ffffff;
+		border:2px solid black;
+	}
+  </style>
+  <script>
+		/* (1) 함수는 3개인데 하는 일이 같다=> 하나의 함수로 통합(단순, 반복적인 일)
+		function setRed(){
+			//배경색에 빨강색을 부여할 태그정보를 가져옴->id
+			var box=document.getElementById("box");
+			//alert(box) style="background:red"
+			//태그정보.상위속성명.하위속성명=변경할 색(저장할 값)
+			box.style.background="#ff0000";
+		}
+		function setGreen(){ //#00ff00
+			var box=document.getElementById("box");
+			box.style.background="#00ff00";
+		}
+		function setBlue(){ //#0000ff
+			var box=document.getElementById("box");
+			box.style.background="#0000ff";
+		} */
+		
+		function setColor(n){
+			//n=1 red, n=2 green, n=3 blue
+			
+			var box=document.getElementById("box"); //색깔적용태그
+			var color="#fffff"; //흰색(기본색)
+			
+			/* if(n==1) color="#ff0000" else if(n==2) color="#00ff00" else~..
+				다중if문=> 속도가 느려지는 단점.=> switch~case문 */
+
+			switch(n) { //switch(조건식)->변수,수식...~
+				//1
+				case 1: color="#ff0000"; //case 문자열 또는 숫자
+				break; //더이상 밑의 구문 실행X (탈출문)
+				//2
+				case 2: color="#00ff00";
+				break;
+				//3
+				case 3: color="#0000ff";
+				break;
+			}
+			box.style.background=color; //box항목에 변경된 색깔을 적용시킨다.
+		}
+
+  </script>
+ </head>
+ <body>
+	<!-- (1)
+	<input type="button" value="Red" onclick="setRed()">
+	<input type="button" value="Green" onclick="setGreen()">
+	<input type="button" value="Blue" onclick="setBlue()"> -->
+
+	<input type="button" value="Red" onclick="setColor(1)">
+	<input type="button" value="Green" onclick="setColor(2)">
+	<input type="button" value="Blue" onclick="setColor(3)">
+	<p>
+	
+	<div id="box"></div>
+	<div id="box2"></div>
+ </body>
+</html>

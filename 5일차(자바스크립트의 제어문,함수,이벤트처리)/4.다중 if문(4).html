@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>4.다중 if문(4).html</title>
+  <!-- 
+		if(조건식)
+			수행1(true)
+		else
+			수행2(false)
+
+		조건식에 따라서 처리할 문장이 하나 이상인 경우에 사용 => 다중 if 문(실행속도가 느려짐)
+		형식) if (조건식1)		ex)성적처리 90->A, 80->B, 70->C...
+					수행1(true)
+				else if (조건식2)
+					수행2
+				else if (조건식3)
+					수행3
+				...
+	
+				else
+					수행(false)
+  
+  -->
+ </head>
+ <body>
+	<script>
+		var qs=prompt("당신이 좋아하는 언어? 1.자바 2.자바스크립트 3.C언어", "");
+		// 조건식->변수, 수식 =>조건식이 여러개 => 연결(and(&&), or(||))
+		if(qs=="자바" || qs==1){
+			document.write("자바를 당신은 좋아하시는군요");
+		}
+		else if(qs=="자바스크립트" || qs==2){
+			document.write("자바스크립트를 선택하셨군요");
+		}
+		else if(qs=="C언어" || qs==3){
+			document.write("당신은 C언어를 선택하셨습니다");
+		}
+		else{
+			alert("최소 한개의 언어는 입력하셔야 됩니다.");
+		}
+	</script>
+ </body>
+</html>

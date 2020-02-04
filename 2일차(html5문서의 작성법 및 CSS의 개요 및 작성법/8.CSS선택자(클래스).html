@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>8.CSS선택자(클래스).html</title>
+  <style>
+	div.a {color:brown; font-family: impact; font-weight: bold;}
+	div.b {font-style: italic; font-family: 돋움체; font-size:23pt;}
+		 .c {text-align: center; text-decoration: line-through;}
+	/*
+		태그명.클래스명(임의) {속성명: 값;~}
+		태그명을 생략하면 모든 태그에 적용하라
+		font-style: 글꼴모양(italic~)
+		text-decoration: 글꼴장식(강조) => underline, overline, line-through(글자중간에 선)
+		text-align: 수평정렬(left, center, right) 
+		vertical-align: 수직정렬(top, middle, bottom)
+	*/
+  </style>
+ </head>
+ <body>
+	<!-- div(영역을 설정할 때 많이 사용) -->
+	<h2>서로 같은 태그인데 구분해서 스타일을 적용</h2>
+	<div class="a">DIV태그1</div>
+	<div class="b">DIV태그2</div>
+	<div>DIV태그3</div>
+	<hr>
+
+	<h2>서로 다른 여러개의 태그에 공통의 스타일을 적용</h2>
+	<a class="c">A태그(class=c)적용</a>
+	<i class="c">I태그(class=c)적용</i>
+	<h1 class="c">h1태그(class=c)적용</h1>
+	<div class="c">div태그(class=c)적용</div>
+	<span class="c">span태그(class=c)적용</span>
+ 
+ </body>
+</html>

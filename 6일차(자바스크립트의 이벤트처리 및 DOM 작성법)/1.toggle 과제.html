@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>toggle(1).html</title>
+  <script>
+	function toggle(){
+		//alert("toggle()");
+		//누른 버튼의 이름 구하기->document.폼이름.버튼이름(입력양식).속성(value);
+		
+		//var b_val=document.f.b_name.value; (1)
+		var b_val=document.getElementById("b_name").value;
+		//alert(b_val);
+		
+		/* (1) 
+		if (b_val=="네이버"){
+			document.f.b_name.value="다음";
+		}
+		else 
+			document.f.b_name.value="네이버";
+	*/
+
+	/*
+		삼항연산자->if문 대용
+		형식) 변수명=(조건식)? 참인문장:거짓인문장;
+							조건식이 참이면 참인문장 수행->변수에저장
+							조건식이 거짓이면 거짓인문장 수행->변수에 저장
+	*/
+		
+		var text=(b_val=="네이버")? "다음":"네이버";
+		document.f.b_name.value=text;
+	}
+  </script>
+ </head>
+ <body>
+  <center>
+	<h1>버튼을 눌러주세요!</h1>
+	<form name="f">
+	<input type="button" name="b_name" id="b_name" value="네이버" onclick="toggle()">
+	<input type="button" value="버튼연습" name="b_button" id="b_button">
+  </center>
+ </body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>5.계산문제.html</title>
+  	<script>
+		function sum(){
+			// alert("sum함수 호출됨");
+			//형식) window(생략가능).document.폼이름(=myForm).inputbox의 name명.value
+			
+			var k=document.myForm.kor.value; //국어점수
+			var e=document.myForm.eng.value; //영어점수
+			var m=document.myForm.mat.value; //수학점수
+			
+			// 웹상에서 입력하는 숫자=>문자열 상수=>"90"+"80"+90"="908090"
+			// 내장함수(Number) => 문자를 숫자로 변환 (Number("65")=>65)
+			
+			var total=Number(k)+Number(e)+Number(m);
+			alert(total);
+		}
+	</script>
+ </head>
+ <body>
+	<form name="myForm" method="post" action="cal.jsp">
+		국어:<input type="text" name="kor" placeholder="국어점수"><br>
+		영어:<input type="text" name="eng" placeholder="영어점수"><br>
+		수학:<input type="text" name="mat" placeholder="수학점수"><br>
+		<input type="button" value="점수출력" onclick="sum()">
+	</form>
+ </body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Radio(4).html</title>
+  <script>
+	function test(){
+		//선택하는 그림에 따라서 다 결과가 다르게 처리=>다중 if문
+		if(document.myform.ok[0].checked==true)
+			alert("1번 그림이 마음에 드시는군요!");
+		else if(document.myform.ok[1].checked==true)
+			alert("2번 그림이 마음에 드시는군요!");
+		else if(document.myform.ok[2].checked==true)
+			alert("3번그림이 마음에 드시는군요!");
+		else
+			alert("3개의 그림중 하나는 무조건 선택해야 합니다.");
+	}
+  </script>
+ </head>
+ <body>
+	<form name="myform">
+		맘에 드시는 그림을 선택하세요<p>
+		<input type="checkbox" name="a1">1.<img src="../images/1.gif"><p>
+		<input type="checkbox" name="a2" checked>2.<img src="../images/2.gif"><p>
+		<input type="checkbox" name="a3">3.<img src="../images/3.gif"><p>
+
+		<input type="button" value="확인" onclick="test()">
+		
+		<!-- 다중선택X => name이 같아야 함,  ok는 인덱스 번호로 구분 -->
+		<!-- 
+			여러개의 항목이지만 하나밖에 선택을 할 수 없는 경우(배열을 이용)
+			ok=new Array(1.gif, 2.gif, 3.gif)=> ok[0], ok[1], ok[2]
+			같은 태그가 여러개 동시에 나오면 => 배열을 생각하라
+		-->
+	</form>
+ </body>
+</html>

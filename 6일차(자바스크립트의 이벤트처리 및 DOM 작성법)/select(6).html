@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>select(6).html</title>
+  <script>
+	function fg_color(form){ //form=document.f_list.form
+		//var list=document.f_list.form.selectedIndex; //option항목의 인덱스번호
+		var list=form.selectedIndex;
+		//alert(list);
+		/*
+			document.fgColor(글자색) or document.bgColor(배경색)
+			document.f_list.form.options[내가선택한 인덱스 번호].text(겉의 항목이름)
+			document.f_list.form.options[내가선택한 인덱스 번호].value(내부 항목이름)
+		*/
+		//alert(document.f_list.form.options[f_list.form.selectedIndex].value)
+		document.fgColor=form.options[list].value;
+		}
+  </script>
+ </head>
+ <body>
+  <center>
+		<h3 style="font-size: 80px">글자색 및 배경색 변경하기</h3>
+		원하시는 색상을 선택하시면 글자의 색깔이 변경됩니다.<p>
+		<form name="f_list">
+			<!--  <select name="form" size="4" multiple> size, multiple 리스트 관련 속성
+					size="항목수"(리스트 박스를 작성할때 사용)
+					한꺼번에 여러개의 항목을 선택(multiple)
+			-->
+			<select name="form" onchange="fg_color(document.f_list.form)">
+				<option value="blue">파랑색</option> <!-- text속성(겉=파랑색) value속성(내부=blue) -->
+				<option value="green">초록색</option>
+				<option value="orange">오렌지색</option>
+				<option value="gray">회색</option>
+			</select>
+		</form>
+  </center>
+ </body>
+</html>

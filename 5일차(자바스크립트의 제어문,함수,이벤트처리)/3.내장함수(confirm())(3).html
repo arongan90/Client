@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>3.내장함수(confirm())(3).html</title>
+
+ </head>
+ <body>
+	<script>
+		
+		//형식) confirm('동의를 구하는 메시지~?')
+		var result=confirm("정말로 회원탈퇴 하시겠습니까?"); //매개변수O, 반환값O (논리적인 값 true or false)
+		
+		// alert(result) //document.write(result) 문서형태로 출력
+		if(result){ //if (result==true) //확인버튼을 눌렀다면 (변수의 값(true)은 생략가능)
+			alert("당신은 정상적으로 회원탈퇴\n 처리되었습니다.");
+			alert("또 실행");
+		}else{
+			alert("회원탈퇴가 취소처리 되었습니다.");
+		}
+
+	</script>
+
+	<!-- 
+	if(조건식) 
+		참인문장을 수행
+
+	{} => 범위(실행되는 범위)를 지정
+
+	{ ~~	} => 블럭처리
+
+	-->
+
+ </body>
+</html>

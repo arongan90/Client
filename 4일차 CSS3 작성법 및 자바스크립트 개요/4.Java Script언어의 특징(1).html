@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>4.Java Script언어의 특징(1).html</title>
+  <style>
+	/* 
+	  여러줄 주석
+	*/
+  </style>
+  <script> //대부분 head태그 안에 작성
+	/*
+	  문자열을 표시=>" " 또는 ' ' 도 가능
+							한글자 표시 ' ' -> 'a'
+							한글자 이상 표시 " " -> "ab"
+	*/
+	//형식) document.write("출력할 문장")
+	document.write("<h1>자바스크립트 처음 실행문장</h1>");
+	document.write("<h1>두번째 문장</h1>");
+  </script>
+ </head>
+ 
+ <body>
+	<section>
+		<header>자바스크립트 언어</header>
+		<article>
+			<ol>
+				<li>html문서내부에 작성(head태그 사이), body태그 사이</li>
+				<li>문법에 맞게 내용을 작성(source file)->
+					  컴파일(컴퓨터가 알아듣는 문장으로 변환)->
+					  메모리(ram)에 올려서 실행(Run)</li>
+				<li>자바스크립트(소스파일)--->컴파일X(에러체크 어려움)->실행 </li>
+				<li><b>함수형 언어로 구성(자바->메소드(method))<b> </li>
+				<li>플랫폼(운영체제)에 상관없이 다 실행이 된다</li>
+				<li>따로 자바스크립트 파일로 만들어서 불러올수 있다</li>
+			</ol>
+		</article>
+	</section>
+	<script src="myScript.js"> // src="경로포함해서 불러올 파일명(~.js)
+		
+	</script>
+ </body>
+</html>

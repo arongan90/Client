@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>5.html5에서 추가된 속성(2).html</title>
+ </head>
+ <body>
+  <form name="frm">
+  <!--
+	웹상에서 입력받을 때 숫자입력->문자로 취급=>"홍길동"(문자)
+																 "23"(문자열 상수)->겉은 숫자지만 내부적 문자
+																 상수=>한번 정해지면 변하지 않는 값(숫자)
+																 "23"->23
+	type="number" min="최소값" max="최대값" step="증가/감소하는 값" value="현재숫자값
+  -->
+	원하는 주문갯수를 설정해주세요<br>
+	<input type="number" name="order" min="1" 
+			  max="20" step="2" value="1"><br>
+	
+	<input type="range" name="order2" min="1" 
+			  max="20" step="2" value="1"><br>  <!-- range -->
+	
+	<input type="search"><br><!-- search(검색)  입력한 값을 취소시 x를 클릭하면 된다. -->
+	
+	원하는 색깔을 선택하세요<br>
+	<input type="color"><p>
+	
+	<!-- 콤보박스의 변형 autofocus="autofocus"(자동으로 커서를 입력하라)
+								list="연결시킬 항목의 id값(구분자) -->
+
+	과목:<input type="text" placeholder="과목을 반드시 입력하세요"
+					 autofocus="autofocus" list="choice">
+	
+	<!-- 텍스트박스에 연결시켜서 보여줄 컴포넌트(datalist)태그를 사용
+		   id=>1) css에서의 id선택자로써 사용(스타일 적용시킬 목적)
+				  2) 언어로 사용->자바스크립트, jQuery
+				  binding=>연결
+		   name도 id와 같은 역할-->
+
+	<datalist id="suggest">
+		<option value="화면구현">
+		<option value="자바">
+		<option value="웹프로그래밍">
+	</datalist>
+
+		<datalist id="choice">
+		<option value="파이썬">
+		<option value="빅데이터">
+		<option value="DB설계">
+	</datalist><p>
+
+<!-- 진행과정, 표시 -->
+<progress id="p" value="20" max="100"></progress><br>
+
+<!-- 백분율 표시(min(최소), max(최대), value(현재값) -->
+<meter value="6" min="0" max="10">2 out of 10</meter><br>
+<meter value="0.7">70%</meter>
+
+<!-- 버튼을 눌렀을 때 어떤 버튼을 눌렀는지 컴퓨터 구분(언어)=> name,id 속성 -->
+<input type="button" value="전송" id="test" onclick="">
+<input type="button" value="전송2" id="test2" onclick="">
+
+
+
+  </form>
+ </body>
+</html>

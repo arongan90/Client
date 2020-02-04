@@ -1,0 +1,75 @@
+2일차(html5문서의 작성법 및 CSS의 개요 및 작성법)
+
+ 처음=>책을 선호(X)=>업그레이드가 느리다.
+       =>강사의 예제=>인터넷에서 참조해서 공부
+
+html,html5,css,javascript,jquery,,,,java
+
+
+Q & A->과제=>프로젝트 시간 활용
+******************************
+www.w3schools.com =>기본
+
+생활코딩 =>자바 동영상
+
+******************************
+
+1.테이블태그.html
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>1.테이블태그.html</title>
+ </head>
+ <body>
+ <center>
+ <!-- 
+  표를 작성 테두리->border=n(픽셀수),width,height(표의 크기)
+                                                픽셀수/상대적인 단위 %
+												70% ->양쪽여백 15% 균등
+					   cellspacing->쉘과 쉘사이의 거리
+					   cellpadding->쉘과 문자열사이의 거리
+                       열(세로) valign=top,middle,bottom
+ -->
+  <table width="70%"  height="70%" border="1"
+            cellspacing="0" cellpadding="0">
+		<tr>
+			<!-- <td align="center"><b>월</b></td>
+			<td align="center"><b>수</b></td>
+			<td align="center"><b>금</b></td> -->
+			<th>월</th>
+			<th>수</th>
+			<th>금</th>
+		</tr><!-- 행(가로) align->left,center,right -->
+		<tr>
+           <td align="left">왼쪽</td>
+		   <td align="center">가운데</td>
+		   <td align="right">오른쪽</td>
+		</tr>
+  </table>
+  </center>
+ </body>
+</html>
+=============================================
+2.테이블태그를 이용한 병합.html
+
+
+=============================================
+html,html5,css,
+
+예습->css 선택자(id), div,span태그의 차이점,
+         border,css의 단위,div의 영역설정=>여백설정(margine,padding?)
+         div영역설정, postion속성?
+
+자바스크립트(2~3일) ->p33 기초문법, p34주석
+                               p37 변수? p38:자료형?
+                               p44=>연산자,종류
+                               p60 연산자
+                                 =>자바에서 자세히 배움
+==============================================
+
+
+
+
+ 

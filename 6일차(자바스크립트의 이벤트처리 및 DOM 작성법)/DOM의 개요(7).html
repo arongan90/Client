@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>DOM의 개요(7).html</title>
+  <script>
+	function test(){
+		//alert("test함수호출 됨");
+		/*
+			DOM(Document Object Model) => html문서, xml문서를 읽어들여서 그 문서의
+			구조(트리구조)대로 메모리(Ram)에 태그정보를 만들어서 관리해주는 API(환경)
+			=> 동적인 화면디자인을 할 때 사용
+
+		*/
+		var spans=document.getElementsByTagName("span"); //태그이름으로 가져옴
+		// alert(spans); [HTMLCollection]=>여러개의 태그를 의미
+		//alert(spans[1].innerHTML); //태그정보.속성=수정하고자 하는 값을 저장
+		spans[1].innerHTML="DOM연습중";
+		spans[2].innerHTML="span태그의 정보를 가져오기";
+	}
+  </script>
+ </head>
+ <body onload="test()">
+	<span>연습1</span> <!-- 같은 태그(배열) -->
+	<span>연습2</span>
+	<span>연습3</span>
+ </body>
+</html>

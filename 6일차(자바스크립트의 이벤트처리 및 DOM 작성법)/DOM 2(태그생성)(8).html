@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>DOM 2(태그생성)(8).html</title>
+  <script>
+	function test2(){
+		//1.h1태그를 생성->document.createElement("생성할 태그이름")
+		
+		var header=document.createElement("h1"); //<h1></h1> 만들어짐
+		
+		// alert(header); [object~] 배열형태로 표시
+		//2.태그 내부에 존재하는 문자열=>텍스트노드(node) 생성
+		//형식) document.createTextNode("출력할 문자열");
+		
+		var textNode=document.createTextNode("DOM Test!"); //innerHTML속성과 동일
+		
+		//3.<h1>DOM Test!</h1> => 부모태그명.appendChild(추가시킬 자식태그명), 결합시키기
+		
+		header.appendChild(textNode);
+		
+		//4. 화면에 출력->body태그에 추가->document.body
+		document.body.appendChild(header);
+
+		// 함수 createElement, createTextNode, appendChild, document.body.~
+	}
+  </script>
+ </head>
+ <body onload="test2()">
+	<!-- <h1>DOM Test!</h1> -->
+ </body>
+</html>

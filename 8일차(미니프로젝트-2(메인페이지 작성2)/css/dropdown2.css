@@ -1,0 +1,70 @@
+/*
+ dropdown2.css(스타일 적용)
+*/
+/* 1레벨 메뉴 */
+.dropdownmenu > li {  /* dropdownmenu클래스를 가진 ul태그 자식태그 li   */
+   float:left; /*왼쪽부터 정렬*/
+   position:relative;/* home을 기준 오른쪽에 배치시키기 위해서 */
+   background:#67b0d1;
+   width:25%;/* 4개의 상단메뉴를 100%를 기준으로해서 배치 */
+}
+
+.dropdownmenu > li > a{  /* 상단메뉴의 글자를 의미 */
+   display:block; /* width,height을 부여,개행*/
+   font-size:16px;
+   color:#ffffff;
+   text-align:center;
+   height:60px;/* inline에서는 width,height가 적용이 안되기때문 */
+   line-height:60px;/* 텍스트와 행사이의 간격*/
+}
+/* 상단메뉴항목에 마우스를 갖다대면 hover를 사용 */
+.dropdownmenu > li:hover {
+  background:#7bbbd7;
+}
+/* 상단메뉴의 마우스를 갖다대면 하위메뉴 출력(ul 2단계메뉴) */
+.dropdownmenu > li:hover > ul{
+  left:0;
+  top:60px;/* 상단메뉴의 높이가 60px이기 때문에 바로 밑에 나오게 하기위해서*/
+}
+
+/* 2레벨메뉴의 속성을 설정(3단계까지 포함해서) ->안보이게 설정 */
+.dropdownmenu ul{
+   position:absolute;/* 좌측상단(0,0)을 기준으로 영역설정*/
+   top:-9999px;/* 위쪽으로 완전히 감추기 */
+   z-index:9999; /* 서브메뉴와 다른 영역과 겹칠때 맨 앞에 내보낼 수 있도록 설정*/
+   width:140px;
+   border:1px solid #cccccc; /* 서브메뉴의 테두리 설정 */
+}
+/* 2단계레벨메뉴의 위치속성,텍스트의크기,여백 설정 */
+.dropdownmenu ul li { /* 최상위 ul태그 밑의 모든 ul 밑의 모든 li태그 적용대상*/
+   position:relative;
+}
+
+.dropdownmenu ul a { /* ul태그 밑의 모든 a태그(서브메뉴항목)*/
+   display:block;
+   color:#aaaaaa;
+   font-size:12px;
+   line-height:40px;
+   background:#ffffff;
+   padding-left:20px;/* 테두리 경계선과 서브메뉴사이의 거리(들여쓰기)*/
+}
+.dropdownmenu ul a:hover { /* 2단계레벨 메뉴에 색깔(마우스 갖다댈때) */
+   color:#ffffff;
+   background:#67b0d1;
+}
+/*2단계 메뉴항목을 마우스로 갖다댔을때 li태그 밑에 ul태그(3단계) 설정 */
+.dropdownmenu ul li:hover > ul {
+   position:absolute;
+   top:0;
+   left:100%; /* 3단계메뉴가 나오는 위치 지정(px지정 쉽지 않기때문에 % 적용*/
+                    /* 25% 2단계와 겹치는 위치(들여쓰기) 50%(중간위치 겹치는 부분)*/
+}
+
+/*  상단메뉴 전체를 위쪽(0,0)에 맞추기위해서 여백을 제거 */
+body,ul{
+ margin:0; /* 테두리 밖의 여백 */
+ padding:0;/* 테두리 안쪽의 여백 */
+}
+ul{list-style:none; /* 마크삭제*/}
+a {text-decoration:none; /* 밑줄 제거 */}
+

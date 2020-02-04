@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>7.연산자(대입,논리)(4).html</title>
+  <!-- 
+	대입(=배정)연산자=>+=, -=, *=, /=
+								  자기자신의 변수에 값을 더하거나, 빼거나, 곱하거나, 나누기를 할 때
+								  사용하는 연산자
+								  ex) a=b+c
+										a=a+2; ~> a+=2; (대입연산자 사용권장->실행속도가 빨라진다)
+			 (산술연산자,대입연산자 2개) ~> (대입연산자 1개)
+										a=a-2; ~> a-=2;
+										a=a*2; ~> a*=2;
+										a=a/2; ~> a/=2;
+    논리연산자=>참과 거짓을 판별할 수 있는 연산자(true or false)
+					   and(&&)그리고, or(||)또는, ! (=not)부정
+				   True  True =True		True True =True		! True = False
+				   True  False =False	True False =True	! False = True
+				   False True =False	False True =True
+				   False False =False	Fasle False =False
+
+  -->
+ </head>
+ <body>
+	<script>
+		function calcPrint(){ //함수명 만들때 규칙->첫글자는 소문자, 중간 문자 바뀌면 대문자
+		var a=10;
+		//a=a+2;
+		
+		// +
+		a+=2;
+		document.write("a+=2~>"+a+"<br>");
+		// -
+		a-=2;
+		document.write("a-=2~>"+a+"<br>");
+		// *
+		a*=2;
+		document.write("a*=2~>"+a+"<br>");
+		// /
+		a/=2;
+		document.write("a/=2~>"+a+"<br>");
+		document.write("============<p>");
+
+		var su1=(2>5) && (5<7) //(2+3)*5
+		document.write("su1~>"+su1+"<p>"); // false && true => False
+		//
+		var su2=(2>5) || (5<7) // false || true => true
+		document.write("su2~>"+su2+"<p>"); // true
+		document.write("!su2~>"+!su2+"<p>"); // false
+		}
+		/* 함수를 사용하는 목적->단순하고 반복적인 구문=>중복배제, 소스코드를 절약
+			개발시간이 단축 */
+		calcPrint();
+		calcPrint();
+
+
+	</script>
+ </body>
+</html>

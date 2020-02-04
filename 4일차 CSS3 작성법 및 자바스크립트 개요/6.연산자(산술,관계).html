@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>6.연산자(산술,관계).html</title>
+  <script>
+	/*
+	 연산자(operator)=>연산(계산)을 하기위한 기호
+	 
+	 1.산술연산자-> +, -, *, /, %(나머지를 구해주는 연산자)
+						  3(항)+5(항)=8 -> 이항산술연산자
+						  +5, -5 -> 단항연산자(++,--)
+	 2.관계연산자(=비교연산자)-> 4>5(false) -> [>,>=,<,<=,]
+	    ==(서로 값이 같다), !=(서로 같지 않다) ex) 5==5, 5!=4
+	*/
+  </script>
+ </head>
+ <body>
+	<script>
+		document.write("산술,관계연산자<br>");
+		var res=20+30; //오른쪽의 연산자가 먼저 실행=>왼쪽에 값을 저장
+		/* 
+		  언제 변수를 사용해야 되느냐?
+		  1.입출력 프로그램을 작성할 필요가 있을 때=>저장하기 위해서(ex 계산기 프로그램 실행)
+		  2.계산할 때=>계산하는 값을 저장할 필요
+		  3.현재 프로그램의 상태를 기억시킬 필요가 있을 때
+		     ex)그림판의 왼쪽버튼의 클릭유무=>논리적인 값 true, false
+			 var mouseclick=false ~> 누르면 var mouseclick=true
+
+			 if(마우스를 클릭했다면) 그림을 그려라
+			
+		*/
+		document.write("res=>"+res+"<br>");//50
+		// -
+		res=20-30; //오른쪽의 연산자가 먼저 실행=>왼쪽에 값을 저장
+		document.write("res=>"+res+"<br>");//-10
+		// *
+		res=20*30; //오른쪽의 연산자가 먼저 실행=>왼쪽에 값을 저장
+		document.write("res=>"+res+"<br>");//600
+		// /
+		res=20/30; //오른쪽의 연산자가 먼저 실행=>왼쪽에 값을 저장
+		document.write("res=>"+res+"<br>");//0.6666
+		res=90%30; //오른쪽의 연산자가 먼저 실행=>왼쪽에 값을 저장
+		document.write("res=>"+res+"<br>");//0
+		document.write("=================<p>");
+		/* 변수를 선언 (it is=>it's)
+			형식) 여러개의 변수를 한꺼번에 선언해서 작성
+			ex) var 변수명=값, 변수명2=값, 변수명3=값... ; */
+		
+		/* "10"(문자열 상수) 10(숫자)
+
+		/* var a=10;
+			var b=5; */
+		var a=10, b=5; //축약문
+		var c=a>b; //10>5 -> true
+		document.write("c=>"+c+"<p>"); //value = true
+		c=a==b; // =(대입연산자), ==(관계연산자)
+		document.write("after c=>"+c+"<p>"); //value = false
+		c=a!=b;
+		document.write("a!=b=> c=>"+c+"<p>"); //value = true
+	</script>
+ </body>
+</html>

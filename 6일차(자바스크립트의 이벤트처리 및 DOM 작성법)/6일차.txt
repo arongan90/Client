@@ -1,0 +1,436 @@
+6일차(자바스크립트의 이벤트처리 및 DOM 작성법)
+
+var userHeight=prompt("당신의 신장은 ?");
+var userWeight=prompt("당신의 체중은?");
+*************************************************
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>toggle(1).html</title>
+  <script>
+     function toggle(){
+       //alert("toggle()");
+       //누른 버튼의 이름을 구하기->document.폼이름.버튼이름(입력양식).속성
+	   //var b_val=document.f.b_name.value;  (1)
+         var b_val=document.getElementById("b_name").value;
+        //alert(b_val);
+		/* (1)
+        if(b_val=="네이버")
+		  document.f.b_name.value="다음";
+		else //다음
+		  document.f.b_name.value="네이버";
+		*/
+		var text=(b_val=="네이버")?"다음":"네이버";
+		document.f.b_name.value=text;
+		/*
+        삼항연산자->if문 대용->형식) 변수명=(조건식)?참인문장:거짓인문장;
+                                         조건식이 참이면 참인문장수행->변수에 저장
+										 조건식이 거짓이면 거짓인문장 수행->변수에 저장
+		*/
+	 }
+  </script>
+ </head>
+ <body>
+  <center>
+    <h1>버튼을 눌러주세요</h1>
+	<form name="f">
+  <input type="button" name="b_name" id="b_name" value="네이버" onclick="toggle()" >
+  <input type="button" value="버튼연습" name="b_button" id="b_button">
+	</form>
+  </center>
+ </body>
+</html>
+====================================
+웹상에서 이벤트 처리,DOM=>JSP
+=====================
+form(2).html
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>form(2).html</title>
+  <script>
+      function test(){ //전송버튼->유효성검사(올바르게 값을 입력했는지 검사하는 규칙)
+         //이름? return 변수명 또는 return 수식=>보고형태(반환값이 있는 경우)
+        if(document.myform.name.value==""){
+            alert("이름은 반드시 작성해야합니다.")
+            document.myform.name.focus();
+			return;//그대로 종료(탈출문)
+		}
+
+		 //전번?
+        if(document.myform.tel.value==""){
+            alert("전번은 반드시 작성해야합니다.")
+            document.myform.tel.focus();
+			return false;
+		} 
+
+		//암호?
+		 if(document.myform.pwd.value==""){ //html5 required
+            alert("암호는 반드시 작성해야합니다.")
+            document.myform.pwd.focus();
+			return false;
+		}
+         //아무런 문제가 없다면->action="a.jsp"로 전송하라
+		 //형식) document.폼이름.submit()-><input type="button"인 경우)
+          document.myform.submit();//수동코딩=>생략 <input type="submit"~>
+	  }
+
+	  function test2(){ //암호입력->4자이상 8자이하만 입력을 허용
+        if(document.myform.pwd.value.length>=4 &&
+		   document.myform.pwd.value.length<8){
+             alert("정상적으로 암호를 입력했습니다.");
+		   }else{
+              alert("암호는 4자이상\n8자이하로 입력을 해야됩니다.");
+			  document.myform.pwd.focus();
+		   }
+	  }
+
+	  function test3(){//다시 처음부터 입력하는 경우
+          document.myform.reset();//document.폼이름.reset();
+		  document.myform.name.focus();
+	  }
+  </script>
+ </head>
+ <body>
+  <form name="myform" method="post" action="a.jsp">
+	  이름:<input type="text" name="name" size="10"><br>
+	  전번:<input type="text" name="tel" size="10"><br>
+	  암호:<input type="password" name="pwd" size="10"><br>
+
+      <!-- <input type="submit" value="전송"> 자동으로 전송한다.action="a.jsp-->
+      <input type="button" value="전송" onclick="test()">
+	  <input type="button" value="암호입력" onclick="test2()">
+	  <input type="button" value="다시입력" onclick="test3()">
+  </form>
+ </body>
+</html>
+======================================
+ 이벤트종류정리(2-1).html
+<!-- 
+    이벤트=>운영체제가 인식가능한 사용자들의 모든 행동(키보드,마우스)+스크린터치
+       이벤트 발생 대상자      종류       이벤트핸들러(EventHandler)=>처리할 내용을 가진 함수
+
+ 1.click 마우스 클릭       on+이벤트종류명=>onclick=연결시킬 함수
+ 2.load 제일먼저 문서(html)을 읽어들일때 =>onload="?"
+ 3.unload ->현재 사이트->다른 사이트로 이동 =>onunload(IE 적용O, chrome 적용X)
+ 4.change->콤보박스에서 특정한 항목을 선택->발생되는 이벤트 onchange
+ 5.mouseover->마우스를 갖다대면 발생->onmouseover
+ 6.mouseout->특정위치에서 마우스포인터가 벗어날때->onmouseout
+ 7.Blur->입력하는 경우(input type="text") 커서가 이동할때 발생시키는 이벤트->
+        onBlur="" 커서를 다음 항목에 이동시키기전에 전의 데이터를 제대로 입력했는지 체크하고 싶을때
+		태그를 구분할때 ->id와 name속성(데이터 입력)을 두개 다 사용이 가능
+  -->
+</head>
+ <body onload="alert('환영합니다')" onunload="alert('다음에 또')">
+    <a href="http://www.daum.net" 
+	     onmouseover="document.img.src='../images/kid2.gif'" 
+	     onmouseout="document.img.src='../images/kid.gif'">
+       <img src="../images/kid.gif" name="img">
+	</a>
+       <img src="../images/kid3.gif" name="img2">
+ </body>
+</html>
+========================================
+화면디자인과 관련된 자바스크립트 문법=>** 배열? **
+
+checkbox, radio은 배열과연관?
+select=>콤보박스
+=========================================
+배열(Array)의 개요 및 사용법(3).html
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>배열(Array)의 개요 및 사용법(3).html</title>
+  <script>
+ /*
+ 배열(array)=>같은 자료형의 변수들의 집합체(var name="홍길동", var age=23)
+                   (문자열은 문자열끼리,숫자는 숫자끼리)
+		ex)성적처리->과목수,총점,평균,석차,,(숫자)
+		                  var su=10,sum=230,avg=78,,,
+		    단점:변수의 갯수가 많아진다.메모리에 랜덤(무작위로 저장)->불러오는 속도가 느려짐
+            장점:변수의 갯수가 1개로 통합=>메모리에 연속적인 저장->속도향상
+		  형식) 배열이름(변수의 대표이름)=new Array(요소1,요소2,,,)
+ */
+   a=new Array("배열","인덱스","길이","추가");//4개  var~
+   //                    0        1        2       3
+   document.write("배열의 길이=>"+a.length+"<br>");//배열의 길이->length
+
+   a2=new Array("21c","자바스크립트응용");//concat(결합시킬 배열명)->배열결합
+   document.write("합친내용=>"+a.concat(a2)+"<br>");
+   a3=new Array(30,10,50,40,20);//10,20,30,40,50 오름차순
+   document.write("sort=>"+a3.sort()+"<br>");
+   document.write("reverse=>"+a.reverse()+"<br>");
+   //배열명[인덱스번호]
+   var a4=["포도","사과"];//형식2) 배열명=[요소1,요소2,,,];
+   document.write("a4[0]=>"+a4[0]+"<br>");
+   document.write("a4[1]=>"+a4[1]+"<br>");
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>
+========================================
+Radio(4).html
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Radio(4).html</title>
+  <script>
+     function test(){
+         //선택하는 그림에 따라서 다 결과가 다르게 처리=>다중 if
+		 if(document.myform.ok[0].checked==true)
+		    alert("1번그림이 맘에 드시는 군요!");
+		 else if(document.myform.ok[1].checked==true)
+		    alert("2번그림이 맘에 드시는 군요!");
+         else if(document.myform.ok[2].checked==true)
+		    alert("3번그림이 맘에 드시는 군요!");
+		 else
+		    alert("3개의 그림중 하나는 무조건 선택해야 합니다.");
+	 }
+  </script>
+ </head>
+ <body>
+  <form name="myform">
+     맘에 드시는 그림을 선택하세요 <p>
+	 <!-- 
+	    여러개의 항목이지만 하나밖에 선택을 할 수 없는 경우(배열을 이용)
+		ok=new Array(1.gif,2.gif,3.gif)->ok[0],ok[1],ok[2]
+		같은 태그가 여러개 동시에 나오면 =>배열을 생각하라
+	 -->
+	 <input type="radio" name="ok">1.<img src="../images/1.gif"><p>
+	 <input type="radio" name="ok">2.<img src="../images/2.gif"><p>
+	 <input type="radio" name="ok">3.<img src="../images/3.gif"><p>
+
+	 <input type="button" value="확인" onclick="test()">
+  </form>
+ </body>
+</html>
+========================================
+Radio(4).html save as Checkbox(5).html
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Radio(4).html</title>
+  <script>
+     function test(){
+         //선택하는 그림에 따라서 다 결과가 다르게 처리=>다중 if
+         var sel="";//선택한 그림을 저장할 문자열변수
+		 //중첩if=>if문 내부에 또 다른 if문이 들어간 제어문
+		 if((document.myform.a1.checked==false) && 
+			 (document.myform.a2.checked==false) && 
+			 (document.myform.a3.checked==false)){  //체크가 안된경우
+              alert("최소한의 한 그림은 선택하셔야 됩니다.");
+		 }else{ //최소한의 체크된 갯수
+
+			 if(document.myform.a1.checked)
+				  sel+="1번"; //sel=sel+"1번";
+
+			 if(document.myform.a2.checked==true)
+				  sel+=" 2번";
+
+			 if(document.myform.a3.checked==true)
+				 sel+=" 3번";
+
+              alert(sel+"그림이 맘에 드시는 군요!");
+			 } 
+	 }
+  </script>
+ </head>
+ <!-- 
+   화면디자인한 이미지,글->마우스 오른쪽버튼 금지,드래그 & 드롭금지
+   oncontextmenu="return false" ->마우스 오른쪽버튼 금지
+   ondragstart="return false"->드래그 시작 금지
+   onselectstart="return false"->선택(블록)금지
+ -->
+ <body oncontextmenu="return false"
+           ondragstart="return false"
+		   onselectstart="return false">
+  <form name="myform">
+     맘에 드시는 그림을 선택하세요 <p>
+	 <!-- 
+	    각각 다중선택이 가능한 경우에는 name을 다르게 줘야 된다.(구분해주기위해서)
+	 -->
+	 <input type="checkbox" name="a1">1.<img src="../images/1.gif"><p>
+	 <input type="checkbox" name="a2">2.<img src="../images/2.gif"><p>
+	 <input type="checkbox" name="a3">3.<img src="../images/3.gif"><p>
+
+	 <input type="button" value="확인" onclick="test()">
+  </form>
+ </body>
+</html>
+========================================
+***select(6).html***
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>select(6).html</title>
+  <script>
+         function fg_color(form){//form=document.f_list.form
+           //var list=document.f_list.form.selectedIndex;//option항목의 인덱스번호
+		   var list=form.selectedIndex;
+		   //alert(list)
+		   /*
+            document.fgColor(글자색) or document.bgColor(배경색)
+            document.f_list.form.options[내가 선택한 인덱스번호].text(겉의 항목이름)
+			document.f_list.form.options[내가 선택한 인덱스번호].value(내부의 항목이름)
+		   */
+          //alert(document.f_list.form.options[f_list.form.selectedIndex].value)
+		   document.fgColor=form.options[list].value
+		 }
+  </script>
+ </head>
+ <body>
+  <center>
+         <h3>글자색및 배경색변경하기</h3>
+		 원하시는 색상을 선택하시면 글자의 색깔이 변경됩니다.<p>
+		 <form name="f_list">
+		 <!-- <select name="form" size="4" multiple>
+		           size="항목수"(리스트 박스를 작성할때 사용)
+		           한꺼번에 여러개의 항목을 선택(multiple)
+		 -->
+           <select name="form" onchange="fg_color(document.f_list.form)">
+                <option value="blue">파랑색</option>
+				                     <!-- text속성(겉) 내부이름 value-->
+				<option value="green">초록색</option>
+				<option value="orange">오렌지색</option>
+				<option value="gray">회색</option>
+		   </select>
+		 </form>
+  </center>
+ </body>
+</html>
+===========================================
+  Angular,React,Vue.js=>DOM
+
+DOM
+
+****************************************************************
+정적디자인->html5,css3
+동적디자인->자바스크립트언어로써 디자인을 할 수 있다.
+                    브라우저상태에서 어떤기능에 따른 디자인 변경
+*****************************************************************
+DOM개요(7).html
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>DOM개요(7).html</title>
+  <script>
+     function test(){
+       //alert("test함수호출됨");
+	   /*
+         DOM(Document Object Model)->html문서 나 xml문서를 읽어들여서 그 문서의
+		 구조(트리구조)대로 메모리(Ram)에 태그정보를 만들어서 관리해주는 API(환경)
+		 =>동적인 화면디자인을 할때 사용
+	   */
+	   var spans=document.getElementsByTagName("span");//태그이름으로 가져옴
+	   //alert(spans)  [HTMLCollection)=>여러개의 태그를 의미
+	   //alert(spans[1].innerHTML)//태그정보.속성=수정하고자하는 값을 저장
+	   spans[1].innerHTML="DOM연습중";
+	   spans[2].innerHTML="span태그의 정보를 가져오기";
+	 }
+  </script>
+ </head>
+ <body onload="test()">
+  <span>연습1</span><!-- 같은 태그(배열) -->
+  <span>연습2</span>
+  <span>연습3</span>
+ </body>
+</html>
+=====================================
+DOM2(태그생성)(8).html
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>DOM2(태그생성)(8).html</title>
+  <script>
+    function test2(){
+      //1.h1태그를 생성->document.createElement("생성할태그이름")
+	  var header=document.createElement("h1");//<h1></h1>
+	  //alert(header) [object~] 배열형태로 표시
+      //2.태그내부에 존재하는 문자열=>텍스트노드(node) 생성
+	  //형식) document.createTextNode("출력할 문자열")
+	  var textNode=document.createTextNode("DOMTest!");//innerHTML속성과 동일
+	  //3.<h1>DOMTest!</h1>->부모태그명.appendChild(추가시킬 자식태그명)
+       header.appendChild(textNode);
+	   //4.화면에 출력->body태그에 추가->document.body
+	   document.body.appendChild(header);
+	}
+  </script>
+ </head>
+ <body onload="test2()">
+    <!-- <h1>DOMTest!</h1> -->
+	
+ </body>
+</html>
+===================================
+DOM을 이용해서 버튼을 동적으로 생성(9).html
+
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>DOM을 이용해서 버튼을 동적으로 생성(9).html</title>
+  <script>
+       //변수 2종류->지역변수(함수내부에서 사용된 변수),전역변수(함수 밖에서 선언)
+       //전역변수=>전체 프로그램에서 사용되는 변수
+	   var count=0;//div태그를 생성->구분할 수 있는 번호체크
+
+       function appendItem(){ //추가
+          count=count+1;//count+=1; count++;//변수를 하나증가(증감연산자)
+		  //                                        count--;//변수의 값을 하나 감소
+          //1.<div></div>
+          var newItem=document.createElement("div");
+		  //2.삭제시킬때 구분<div id="item_번호"></div>
+		  //형식)생성된 태그명.setAttribute(속성명,속성값)
+        newItem.setAttribute("id","item_"+count);//<div id="item_1"></div>
+	      //3.텍스트노드 생성->createTextNode or innerHTML속성을 이용(긴문장시 사용)
+         var html='새로 추가된 아이템['+count+']'+'<input type="button" value="삭제"'+'onclick="removeItem('+count+')" />';
+		 //4.결합->새로 생성된태그.innerHTML='값'
+		 newItem.innerHTML=html;//<div id="item_1">새로 추가된~</div>
+		 //5.부모의 태그정보 얻어옴
+		 var itemListNode=document.getElementById("itemList");
+		 //6.부모태그명.appendChild(자식태그명)
+         itemListNode.appendChild(newItem);
+	   }
+	   function removeItem(idCount){//삭제시킬 id값을 받아와서 삭제
+        //삭제시킬 태그정보
+          var item=document.getElementById("item_"+idCount);
+		  //appendChild(~)<->부모태그명.removeChild(삭제시킬 자식태그명)
+		  //부모태그를 얻어오는 방법2=>자식태그명.parentNode->부모태그
+         item.parentNode.removeChild(item);
+	   }
+  </script>
+ </head>
+ <body>
+  <input type="button" value="추가" onclick="appendItem()">
+  <div id="itemList">
+       <!-- 
+	   <div id="item_1">새로 추가된 아이템1[삭제버튼]</div>
+	   <div id="item_2">새로 추가된 아이템2[삭제버튼]</div> 
+	   -->
+  </div>
+ </body>
+</html>
+==========================================
+
+
+
+
+
+
